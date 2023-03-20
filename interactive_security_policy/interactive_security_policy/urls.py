@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from policy.views import policy, index
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('policy/<int:chapter_id>/', policy, name="policy"),
+    path('', index, name="index"),
 ]
