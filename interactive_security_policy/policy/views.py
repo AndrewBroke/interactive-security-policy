@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from policy.models import Policy
 
+
 def policy(request, chapter_id ):
     context = {
         'title': 'Политика безопасности',
@@ -12,6 +13,7 @@ def policy(request, chapter_id ):
     }
     return render(request, 'policy/index.html', context)
 
+
 def index(request):
     context = {
         'title': 'Политика безопасности',
@@ -19,6 +21,11 @@ def index(request):
         'chapter': Policy.objects.get(id=1)
     }
     return render(request, 'policy/index.html', context)
+
+
+def login(request):
+    return render(request, 'policy/login.html')
+
 
 # class PolicyView(TitleMixin, TemplateView):
 #     title = 'Политика безопасности'
