@@ -1,8 +1,10 @@
 from django.shortcuts import render
-# from django.views.generic.base import TemplateView
-# from common.views import TitleMixin
+from django.contrib.auth.views import LoginView
+from common.views import TitleMixin
+from django.urls import reverse_lazy, reverse
 
 from policy.models import Policy
+from policy.forms import UserLoginForm
 
 
 def policy(request, chapter_id ):
@@ -23,10 +25,8 @@ def index(request):
     return render(request, 'policy/index.html', context)
 
 
-def login(request):
-    return render(request, 'policy/login.html')
-
-
-# class PolicyView(TitleMixin, TemplateView):
-#     title = 'Политика безопасности'
-#     template_name = 'policy/index.html'
+class UserLoginView(TitleMixin, LoginView):
+    template_name = 'policy/login.html'
+    title = 'Авторизация'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('index')

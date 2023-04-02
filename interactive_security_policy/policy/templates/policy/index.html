@@ -25,8 +25,7 @@
 
     <div class="main-container">
         <div class="buttons-container">
-            <button class="search-button">Поиск</button>
-            <a class="login-button" href="{% if user.is_authenticated %} Выйти {% else %} {% url 'login' %} {% endif %}">{% if user.is_authenticated %} Выйти {% else %} Войти {% endif %}</a>
+            <a class="login-button" href="{% if user.is_authenticated %} {% url 'logout' %} {% else %} {% url 'login' %} {% endif %}">{% if user.is_authenticated %} Выйти {% else %} Войти {% endif %}</a>
         </div>
         <h1 class="main-title">{{ chapter.id }}. {{ chapter.title }}</h1>
         {{ chapter.text|safe }}
