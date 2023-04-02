@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}} - {{ chapter.title }}</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" href="{% static '/styles/style.css' %}">
 </head>
 
@@ -22,7 +22,7 @@
             {% endfor %}
             {% if user.is_authenticated %}
                 <li class="navigation-item">
-                    <a class="navigation-link-added" href="{% url 'chapter' %}">+ Добавить главy</a>
+                    <a class="navigation-link-added" href="">+ Добавить главy</a>
                 </li>
             {% endif %}
         </ul>
@@ -35,8 +35,16 @@
             {% endif %}
             <a class="login-button" href="{% if user.is_authenticated %} {% url 'logout' %} {% else %} {% url 'login' %} {% endif %}">{% if user.is_authenticated %} Выйти {% else %} Войти {% endif %}</a>
         </div>
-        <h1 class="main-title">{{ chapter.id }}. {{ chapter.title }}</h1>
-        {{ chapter.text|safe }}
+        <form action="{% url 'chapter' %}" method="post">
+            {% csrf_token %}
+            <label class="label-chapter" for="{{ form.title.id_for_label }}">Название главы
+                {{ form.title }}
+            </label>
+            <label class="label-chapter" for="{{ form.text.id_for_label }}">Содержание (HTML-разметка)
+                {{ form.text }}
+            </label>
+            <button class="button-chapter" type="submit">Отправить</button>
+        </form>
     </div>
 </body>
 
