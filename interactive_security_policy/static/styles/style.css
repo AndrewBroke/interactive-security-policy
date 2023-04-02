@@ -60,6 +60,18 @@ body {
     padding: 15px 60px;
 }
 
+.navigation-link-added {
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #4287f5;
+    padding: 15px 60px;
+}
+
+.navigation-link-added:hover {
+    background-color: #1f3f73;
+}
+
 .navigation-link:hover{
     background-color: #4D4B4B;
 }
@@ -96,9 +108,33 @@ body {
     color: #FFFFFF;
     display: block;
     padding: 15px 36px;
+    border: 2px solid #FFFFFF;
 }
 
 .login-button:hover {
+    background-color: #606060;
+    color: #FFFFFF;
+}
+
+.label-chapter {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.input-chapter {
+    height: 50px;
+}
+
+.button-chapter {
+    background-color: #232323;
+    color: #FFFFFF;
+    padding: 15px 36px;
+    border: none;
+}
+
+.button-chapter:hover {
     background-color: #606060;
     color: #FFFFFF;
 }
