@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from policy.models import Policy
 from policy.forms import UserLoginForm, ChapterForm
 
+from django.shortcuts import get_object_or_404
+
 
 def policy(request, chapter_id ):
     context = {
